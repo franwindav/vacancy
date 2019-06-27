@@ -11,18 +11,29 @@ class AboutVacancy extends Component {
   }
   render() {
     const { data } = this.state;
+    if (Object.keys(this.state.data).length == 0) return "";
     return (
       <div className={style["about-vacansy"]}>
-        <img
-          src={data.employer != undefined ? data.employer.logo_urls["240"] : ""}
-          className={style.logo}
-        />
         <h1 className={style.title}>{data.name}</h1>
         <Salary salary={data.salary} price={style.price} />
-        <a href="" className={style.company}>
-          {data.employer != undefined ? data.employer.name : ""}
-        </a>
-        <p className={style.address}>{this.getAddress()}</p>
+        <div className={style.container}>
+          <div className={style.text}>
+            <a href="" className={style.company}>
+              {data.employer.name}
+            </a>
+            <p className={style.address}>{this.getAddress()}</p>
+          </div>
+          <div className={style.logo}>
+            <img
+              src={
+                data.employer.logo_urls != undefined
+                  ? data.employer.logo_urls["240"]
+                  : ""
+              }
+              className={style.img}
+            />
+          </div>
+        </div>
         <p className={style.info}>
           {this.getExperience()}
           <br />
@@ -43,7 +54,6 @@ class AboutVacancy extends Component {
   }
   getExperience() {
     const { experience } = this.state.data;
-    if (experience == undefined) return;
     let str;
     switch (experience.id) {
       case "noExperience": {
@@ -78,6 +88,7 @@ class AboutVacancy extends Component {
     return str;
   }
   componentWillReceiveProps(newProps) {
+    //this.state.data = {};
     this.updateDataFromApi(newProps);
   }
   componentDidMount() {

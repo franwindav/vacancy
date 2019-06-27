@@ -27,7 +27,11 @@ class Vacancy extends Component {
         <li className={style.item}>
           <ul className={style.info}>
             <li>
-              <Link href={`/vacancy?id=${data.id}&text=${this.props.text}`}>
+              <Link
+                href={`/vacancy?id=${data.id}${
+                  this.props.text != "" ? "&text=" + this.props.text : ""
+                }`}
+              >
                 <a className={style.name} href="">
                   {data.name}
                 </a>
@@ -39,7 +43,7 @@ class Vacancy extends Component {
               </a>
             </li>
           </ul>
-          <Salary salary={data.salary} />
+          <Salary salary={data.salary} price={style.price} />
         </li>
         <li className={style.item}>
           {this.getSnippet()}

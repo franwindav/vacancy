@@ -13,11 +13,18 @@ class Search extends Component {
   render() {
     return (
       <div className={styles.search}>
-        <img
-          width="20px"
-          className={styles.searchLogo}
-          src="static/img/logo_hh.png"
-        />
+        <Link href="/">
+          <img
+            width="20px"
+            className={styles.searchLogo}
+            src="static/img/logo_hh.png"
+            onClick={() => {
+              this.setState({
+                text: ""
+              });
+            }}
+          />
+        </Link>
         <input
           className={styles.searchInput}
           type="text"
@@ -26,7 +33,6 @@ class Search extends Component {
           value={this.state.text}
           onChange={e => {
             if (e.charCode == 13) return;
-            console.log(this.searchInput.value);
             this.setState({
               text: this.searchInput.value
             });

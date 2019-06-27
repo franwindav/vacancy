@@ -12,22 +12,52 @@ class VavancyList extends Component {
     };
   }
   render() {
+    if (this.state.data.length == 0) return "";
     return (
-      <ul className={style.list}>
-        {this.state.data.map(e => (
-          <li className={style.vacancy} key={e.id}>
-            <Vavancy data={e} text={this.props.searchFilter} />
-          </li>
-        ))}
-      </ul>
+      <div className={style.container}>
+        {this.getTitle()}
+        <ul key="list" className={style.list}>
+          {this.state.data.map(e => (
+            <li className={style.vacancy} key={e.id}>
+              <Vavancy data={e} text={this.props.searchFilter} />
+            </li>
+          ))}
+        </ul>
+      </div>
     );
   }
   getTitle() {
-    //TODO create
-    if (this.state.count == undefined) return;
-    return <h1>{this.state.count}</h1>;
+    let { count } = this.state;
+    let x = count + "";
+    let y = Number(x[x.length - 2] + x[x.length - 1]);
+    let z = Number(x[x.length - 1]);
+    let str;
+    switch (true) {
+      case y > 4 && y < 21: {
+        str = "вакансий";
+        break;
+      }
+      case z == 1: {
+        str = "вакансия";
+        break;
+      }
+      case z < 5: {
+        str = "вакансии";
+        break;
+      }
+      case z < 10 || z == 0: {
+        str = "вакансий";
+        break;
+      }
+    }
+    return (
+      <h1 key="h1" className={style.title}>
+        Найдено {count} {str}
+      </h1>
+    );
   }
   componentWillReceiveProps(newProps) {
+    //this.state.data = [];
     this.updateDataFromApi(newProps);
   }
   componentDidMount() {

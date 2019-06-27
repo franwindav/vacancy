@@ -2,24 +2,44 @@
   position: relative;
   width: 700px;
   margin: auto;
-  .logo {
-    position: absolute;
-    top: 100px;
-    right: 10px;
-    max-width: 140px;
-    max-height: 100px;
-  }
   .container {
-    position: relative;
-    width: 150px;
-    height: 100px;
-    .logo {
-      position: absolute;
-      top: 0;
-      max-width: 150px;
-      max-height: 100px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 15px;
+    .text {
+      .company {
+        display: inline-block;
+        width: 450px;
+        margin-top: 10px;
+        margin-bottom: 7px;
+        font-family: ProximaNovaCond, Arial, sans-serif;
+        font-size: 22px;
+        line-height: 1.4;
+        color: #09f;
+        text-decoration: none;
+      }
+      .address {
+        font-family: Arial, sans-serif;
+        font-size: 14px;
+        color: #333;
+        line-height: 21px;
+        margin: 0;
+      }
     }
-    padding: 5px;
+    .logo {
+      display: flex;
+      align-items: center;
+      position: relative;
+      width: 200px;
+      height: 100px;
+      .img {
+        position: absolute;
+        max-width: 200px;
+        max-height: 100px;
+      }
+      padding: 5px;
+    }
   }
   .title {
     margin: 0 0 15px;
@@ -36,23 +56,6 @@
     overflow-wrap: break-word;
     color: #333;
     line-height: 21px;
-  }
-  .company {
-    display: inline-block;
-    margin-top: 10px;
-    margin-bottom: 7px;
-    font-family: ProximaNovaCond, Arial, sans-serif;
-    font-size: 22px;
-    line-height: 1.4;
-    color: #09f;
-    text-decoration: none;
-  }
-  .address {
-    font-family: Arial, sans-serif;
-    font-size: 14px;
-    color: #333;
-    line-height: 21px;
-    margin: 0;
   }
   .info {
     display: inline-block;
