@@ -2,8 +2,8 @@ import React, { Component } from 'react';
 import Link from 'next/link';
 import MONTH from 'Data/month';
 import getSalary from 'Utils/getSalary';
-import * as Components from './StyledComponents';
 import getImgUrl from 'Utils/getImgUrl';
+import * as Components from './StyledComponents';
 
 class Vacancy extends Component {
    render() {

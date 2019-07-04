@@ -3,7 +3,6 @@ module.exports = {
    singleQuote: true,
    trailingComma: 'all',
    bracketSpacing: true,
-   singleQuote: true,
    jsxBracketSameLine: false,
    tabWidth: 3,
    semi: true,

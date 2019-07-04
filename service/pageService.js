@@ -1,6 +1,6 @@
 import mainService from './mainService';
 
-class pageService extends mainService {
+class PageService extends mainService {
    constructor() {
       super();
       this.pageCount = 0;
@@ -13,6 +13,6 @@ class pageService extends mainService {
    }
 }
 
-const SERVICE = new pageService();
+const SERVICE = new PageService();
 
 export default SERVICE;

@@ -1,17 +1,14 @@
 import React, { Component } from 'react';
-import { ListControls_, PageControl_ } from './StyledComponents';
 import SERVICE from 'Service/pageService';
+import { ListControls_, PageControl_ } from './StyledComponents';
 
 const showControlPages = 5;
 
 class Search extends Component {
-   constructor(props) {
-      super(props);
-   }
    render() {
       const { pageCount } = SERVICE;
       const { pages } = this.props;
-      let res = [];
+      const res = [];
       let reg = 0;
       if (pageCount > 2) {
          if (pages > 6) {
@@ -37,7 +34,7 @@ class Search extends Component {
          }
       }
       for (let i = 1; i <= showControlPages; i++) {
-         let index = i + reg;
+         const index = i + reg;
          if (index == pages) break;
          res.push(
             <PageControl_
@@ -51,12 +48,13 @@ class Search extends Component {
             </PageControl_>,
          );
       }
-      if (pageCount < pages - 4 && pages > 6)
+      if (pageCount < pages - 4 && pages > 6) {
          res.push(
             <PageControl_ className="ellipsis" key="...">
                ...
             </PageControl_>,
          );
+      }
       res.push(
          <PageControl_
             className={pages - 1 == pageCount ? 'active' : ''}

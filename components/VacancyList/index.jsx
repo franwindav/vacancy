@@ -3,10 +3,10 @@ import SEARCH_SERVICE from 'Service/searchService';
 import PAGE_SERVICE from 'Service/pageService';
 import CLEAR_SERVICE from 'Service/clearService';
 import getDataFromApi from 'Utils/getVacancyListFromApi';
+import getTitle from 'Utils/declension';
 import Vacancy from '../Vacancy';
 import PageControl from '../PageControl';
 import { VavancyList_, Title_, List_ } from './StyledComponents';
-import getTitle from 'Utils/declension';
 
 class VavancyList extends Component {
    constructor(props) {
@@ -60,8 +60,9 @@ class VavancyList extends Component {
          this,
       );
    }
+
    render() {
-      if (this.state.data.length == 0) return '';
+      if (this.state.data.length === 0) return '';
       return (
          <VavancyList_>
             <Title_>
@@ -77,6 +78,7 @@ class VavancyList extends Component {
          </VavancyList_>
       );
    }
+
    componentWillUnmount() {
       this.serviceSearchFuncs.remove();
       this.serviceAreasFuncs.remove();

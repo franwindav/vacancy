@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import Router from 'next/router';
-import * as Components from './StyledComponents';
 import getSalary from 'Utils/getSalary';
 import getExperience from 'Utils/getExperience';
+import * as Components from './StyledComponents';
 
 class AboutVacancy extends Component {
    constructor(props) {
@@ -12,6 +12,7 @@ class AboutVacancy extends Component {
          id: 0,
       };
    }
+
    render() {
       Router.ready(() => {
          this.state.id = Router.query.id;
@@ -48,28 +49,32 @@ class AboutVacancy extends Component {
          </Components.AboutVacancy_>
       );
    }
+
    getAddress() {
       const { address, area } = this.state.data;
       if (address == undefined || address.city == undefined) {
          return area == undefined ? '' : area.name;
       }
       let str = address.city;
-      if (address.street != undefined) str += ', ' + address.street;
+      if (address.street != undefined) str += `, ${address.street}`;
       return str;
    }
+
    componentWillReceiveProps() {
       this.updateDataFromApi();
    }
+
    componentDidMount() {
       this.updateDataFromApi();
    }
+
    async updateDataFromApi() {
       const { id } = this.state;
       const result = await fetch(`https://api.hh.ru/vacancies/${id}`);
       const text = await result.text();
       const data = JSON.parse(text);
       this.setState({
-         data: data,
+         data,
       });
    }
 }

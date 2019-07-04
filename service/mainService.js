@@ -6,7 +6,7 @@ class mainService {
       this.store[event].push({
          func,
          ctx: context,
-      }) - 1;
+      });
       return {
          remove: () => {
             this.store[event] = this.store[event].filter(e => e.ctx != context);

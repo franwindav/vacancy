@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import Router from 'next/router';
-import { Main_, Logo_, Input_, Button_ } from './StyledComponents';
-import Areas from './Areas';
 import SEARCH_SERVICE from 'Service/searchService';
 import CLEAR_SERVICE from 'Service/clearService';
+import { Main_, Logo_, Input_, Button_ } from './StyledComponents';
+import Areas from './Areas';
 
 class Search extends Component {
    constructor(props) {
@@ -18,6 +18,7 @@ class Search extends Component {
          this,
       );
    }
+
    render() {
       return (
          <Main_>
@@ -57,9 +58,11 @@ class Search extends Component {
          </Main_>
       );
    }
+
    componentDidMount() {
       SEARCH_SERVICE.changeSearchFilter(this.searchInput.value);
    }
+
    componentWillUnmount() {
       this.serviceClearFuncs.remove();
    }

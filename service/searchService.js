@@ -1,7 +1,7 @@
 import mainService from './mainService';
 import PAGE_SERVICE from './pageService';
 
-class searchService extends mainService {
+class SearchService extends mainService {
    constructor() {
       super();
       this.searchText = '';
@@ -14,14 +14,15 @@ class searchService extends mainService {
       this.searchText = newSearchFilter;
       return this.emit('changeSearchFilter', newSearchFilter);
    }
+
    changeAreasID(id, name) {
       PAGE_SERVICE.pageCount = 0;
       this.areasID = id;
-      this.areasName = name;
+      this.areasNameS = name;
       return this.emit('changeAreas', id);
    }
 }
 
-const SERVICE = new searchService();
+const SERVICE = new SearchService();
 
 export default SERVICE;
